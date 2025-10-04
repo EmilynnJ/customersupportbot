@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: supportbot-api
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build --workspace client
+    startCommand: npm run start --workspace server
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: ADMIN_EMAIL
+        value: admin@example.com
+      - key: ADMIN_PASSWORD
+        value: changeme
+      - key: CLIENT_URL
+        value: https://supportbot-client.onrender.com
+      - key: DB_PATH
+        value: ./server/data/supportbot.sqlite
+  - type: static
+    name: supportbot-client
+    buildCommand: npm install && npm run build --workspace client
+    publishPath: client/dist

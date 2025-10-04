@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  supportbot:
+    build: .
+    container_name: supportbot-app
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - CLIENT_URL=http://localhost:5173
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - JWT_SECRET=${JWT_SECRET:-change-me}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@example.com}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-changeme}
+      - DB_PATH=/data/supportbot.sqlite
+    volumes:
+      - ./server/data:/data
+    restart: unless-stopped
