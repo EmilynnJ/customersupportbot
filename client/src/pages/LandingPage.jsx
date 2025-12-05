@@ -11,6 +11,7 @@ const LandingPage = () => {
           <a href="#features" className="hover:text-primary transition">Features</a>
           <a href="#admin" className="hover:text-primary transition">Admin</a>
           <a href="#contact" className="hover:text-primary transition">Contact</a>
+          <Link to="/generator" className="hover:text-primary transition">Generator</Link>
           <Link to="/admin" className="px-4 py-2 rounded-full bg-primary text-white font-medium shadow hover:bg-blue-600 transition">
             Admin Login
           </Link>
